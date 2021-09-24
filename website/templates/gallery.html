@@ -7,11 +7,22 @@
 <h2 align="center">
     {{ips[0].__class__.__name__}}
 </h2>
-<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a>
-{{ips}}<br/><br/>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a><br/>
+<br/>
+
+<!-- Gallery -->
+<div class="row">
 {% for ip in ips%}
-{{ip.img}}<br/>
-{% endfor %}
+<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+    <img
+      src="..{{ip.img.split('website')[-1]}}"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt=""
+    />
+</div>
+      {% endfor %}
+</div>
+<!-- Gallery -->
 
 <br/>
 <br/>

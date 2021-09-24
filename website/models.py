@@ -9,7 +9,7 @@ class MetaCeleb(db.Model):
     real_name = db.Column(db.String(30))
     job = db.Column(db.String(100))
     dob = db.Column(db.String(30))
-    company = db.Column(db.String(100))  
+    company = db.Column(db.String(100))
     img = db.Column(db.Text, unique = True, nullable=False)
     img_name = db.Column(db.Text, nullable=False)
     img_mimetype = db.Column(db.Text, nullable=False)

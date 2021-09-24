@@ -90,24 +90,21 @@ def img_link(id):
     image = Response(ip.img, mimetype = ip.img_mimetype)
     return image
 
-@views.route('/<ip_type>', methods=['GET', 'POST'])
+@views.route('/Gallery/<int:id>', methods=['GET', 'POST'])
 @login_required
-def show_ip(ip_type):
+def gallery_link(id):
+    ip = Gallery.query.filter_by(id=id).first()
+    if not ip:
+        return 'No images'
+    return ip.img
+
+@views.route('/MetaCeleb', methods=['GET', 'POST'])
+@login_required
+def show_ip():
     global current_ips
-    current_db = db_dict[ip_type]
-    all_jobs = db.session.query(current_db.job).distinct()
+    all_jobs = db.session.query(MetaCeleb.job).distinct()
     this_year = datetime.datetime.now().year
-    ips = current_db.query.order_by(desc(current_db.id)).all()
-    '''
-    if request.method == 'POST':
-        old_ip_type = current_ips[0].__class__.__name__
-        if not current_ips:
-            current_ips = ips
-        else:
-            if ip_type != old_ip_type:
-                current_ips = ips
-        return export_ips(current_ips)
-        '''
+    ips = MetaCeleb.query.order_by(desc(MetaCeleb.id)).all()
     total_num = len(ips)
     return render_template("metaceleb_card.html", user=current_user, ips = ips, total_num = total_num, all_jobs = all_jobs, searched='False', this_year = this_year)
 
