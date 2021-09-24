@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}IP LIST CARD {% endblock %}
+
+{% block content%}<br/>
+<div style="text-align: center;">
+    <img src="../static/images/Slogan_2_Black.png" style = "max-width: 100%" alt="Slogan_black">
+</div>
+<h2 align="center">
+    {{ips[0].__class__.__name__}}
+</h2>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add IP</a>
+
+<br/>
+<br/>
+<div class="row row-cols-1 row-cols-md-2 g-2">
+    {% for ip in ips %}
+<div class="card" style="width: 18rem; border-radius: 10px;">
+    <div class="card-body">
+    <img src="{{ url_for('views.img_link', id=ip.id)}}" alt="thumbnail" class="img-thumbnail">
+    <h4 class="card-title">{{ip.name}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">직업 - {{ip.job}}</h6>
+    <br/>
+      <p class="card-text">
+      생일 - {{ip.dob}}
+      </p>     
+    <a href="/detail-view/{{ip.__class__.__name__}}/{{ip.id}}" class="btn btn-outline-secondary btn-sm" >view in detail</a>
+    <a href="/update/{{ip.__class__.__name__}}/{{ip.id}}" class="btn btn-outline-secondary btn-sm" >edit</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
