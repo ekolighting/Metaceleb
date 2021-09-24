@@ -36,8 +36,6 @@ class Gallery(db.Model):
     note = db.Column(db.String(2000))
     date = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    def __repr__(self):
-        return f'Pic Name: {self.name}'
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

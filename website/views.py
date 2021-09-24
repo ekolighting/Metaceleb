@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 from sqlalchemy import or_, desc
 from os import walk
 from pandas import ExcelWriter
-import io, math
+import io, math, os
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.writer.excel import save_virtual_workbook
@@ -98,6 +98,7 @@ def show_ip(ip_type):
     all_jobs = db.session.query(current_db.job).distinct()
     this_year = datetime.datetime.now().year
     ips = current_db.query.order_by(desc(current_db.id)).all()
+    '''
     if request.method == 'POST':
         old_ip_type = current_ips[0].__class__.__name__
         if not current_ips:
@@ -106,60 +107,68 @@ def show_ip(ip_type):
             if ip_type != old_ip_type:
                 current_ips = ips
         return export_ips(current_ips)
+        '''
     total_num = len(ips)
     return render_template("metaceleb_card.html", user=current_user, ips = ips, total_num = total_num, all_jobs = all_jobs, searched='False', this_year = this_year)
 
 @views.route('/MetaCeleb/Gallery', methods=['GET', 'POST'])
 @login_required
 def gallery():
-    all_imgs = Gallery.query.order_by(desc(Gallery.id)).all()
-    return render_template("gallery.html", user=current_user, all_imgs = all_imgs)
+    ips = Gallery.query.order_by(desc(Gallery.id)).all()
+    return render_template("gallery.html", user=current_user, ips=ips)
 
 @views.route('/adding/Gallery', methods=['GET','POST'])
 @login_required
-def adding_images():
+def adding_artwork():
+    image_path = 'website/static/images'
     this_year = datetime.datetime.now().year
-    ips = MetaCeleb.query.order_by(desc(Gallery.num)).all()
+    ips = Gallery.query.order_by(desc(Gallery.num)).all()
     max_num = get_maxnum(ips)
     all_metaceleb = db.session.query(MetaCeleb.name).distinct()
     if request.method == 'POST':
         ip_exist = False        
         n = request.form.get('num')
         mc_name = request.form.get('metaceleb_name')
-        img_name = request.form.get('image_name')
-
+        if not mc_name:
+            mc_name = request.form.get('metaceleb_name_1')
+        if not mc_name:
+            flash('메타셀럽 이름이 없습니다. 확인해주세요!', category='error')
         pic = request.files['pic']
         if not pic:
             flash('이미지가 없습니다. 확인해주세요!', category='error')
             
         img_name = secure_filename(pic.filename)
         img_mimetype = pic.mimetype
-        if len() < 1:
-            flash('이름이 너무 짧습니다! 확인해주세요!', category='error')
+        image_path = os.path.join(image_path, mc_name)
+        if not os.path.isdir(image_path):
+            os.makedirs(image_path)
+        image_full_path = os.path.join(image_path, img_name)
+        pic.save(image_full_path)
+        
+        notes = request.form.get('notes')
+
         if not ip_exist:
-            new_ip = MetaCeleb(num=n,
-                               name = na,
-                               real_name = re_na,
-                               dob = dob_year + '.' + dob_mon,
-                               job = j,
-                               img = pic.read(),
-                               img_mimetype = img_mimetype,
-                               img_name = img_name,
-                               nationality = nat,
-                               user_id=current_user.id, 
-                               date = str(datetime.datetime.now()).split('.')[0])
+            new_ip = Gallery(num=n,
+                             metaceleb_name = mc_name,
+                             img = image_full_path,
+                             img_mimetype = img_mimetype,
+                             img_name = img_name,
+                             note = notes,
+                             user_id=current_user.id, 
+                             date = str(datetime.datetime.now()).split('.')[0]
+                            )
+
             db.session.add(new_ip)
             db.session.commit()
-            
-            flash('New MetaCeleb added!', category='success')
-            return redirect('/MetaCeleb')
-        
-    return render_template("adding_images.html", user=current_user, ips=ips, max_num = max_num, all_jobs = all_jobs, all_nationality = all_nats, this_year = this_year)
+
+            flash('New Artwork is added to Gallery!', category='success')
+            return redirect(url_for('views.gallery'))
+    return render_template("adding_gallery.html", user=current_user, ips=ips, max_num = max_num, all_metaceleb = all_metaceleb, this_year = this_year)
 
 
 @views.route('/detail-view/MetaCeleb/<int:id>', methods=['GET','POST'])
 @login_required
-def deatil_view_webtoon(id):
+def deatil_view_metaceleb(id):
     ip_to_update = MetaCeleb.query.get_or_404(id)
     return render_template("detail_view.html", user=current_user, ip = ip_to_update)
 

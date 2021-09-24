@@ -1,7 +1,18 @@
-{% extends "base.html" %} {% block title %}IP LIST CARD {% endblock %}
+{% extends "base.html" %} {% block title %}Artwork Gallery {% endblock %}
 
 {% block content%}
+<div style="text-align: center;">
+    <img src="../static/images/Slogan_2_Black.png" style = "max-width: 100%" alt="Slogan_black">
+</div>
+<h2 align="center">
+    {{ips[0].__class__.__name__}}
+</h2>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a>
+{{ips}}<br/><br/>
+{% for ip in ips%}
+{{ip.img}}<br/>
+{% endfor %}
 
-
-
+<br/>
+<br/>
 {% endblock %}
