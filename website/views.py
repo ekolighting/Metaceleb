@@ -114,6 +114,13 @@ def gallery():
     ips = Gallery.query.order_by(desc(Gallery.id)).all()
     return render_template("gallery.html", user=current_user, ips=ips)
 
+@views.route('/MetaCeleb/Gallery_cp', methods=['GET', 'POST'])
+@login_required
+def gallery_cp():
+    ips = Gallery.query.order_by(desc(Gallery.id)).all()
+    length = len(ips)
+    return render_template("gallery_copy.html", user=current_user, ips=ips, ips_len = length)
+
 @views.route('/adding/Gallery', methods=['GET','POST'])
 @login_required
 def adding_artwork():
@@ -126,6 +133,7 @@ def adding_artwork():
         ip_exist = False        
         n = request.form.get('num')
         mc_name = request.form.get('metaceleb_name')
+        img_title = request.form.get('image_title')
         if not mc_name:
             mc_name = request.form.get('metaceleb_name_1')
         if not mc_name:
@@ -134,12 +142,12 @@ def adding_artwork():
         if not pic:
             flash('이미지가 없습니다. 확인해주세요!', category='error')
             
-        img_name = secure_filename(pic.filename)
+        file_name = secure_filename(pic.filename)
         img_mimetype = pic.mimetype
         image_path = os.path.join(image_path, mc_name)
         if not os.path.isdir(image_path):
             os.makedirs(image_path)
-        image_full_path = os.path.join(image_path, img_name)
+        image_full_path = os.path.join(image_path, file_name)
         pic.save(image_full_path)
         
         notes = request.form.get('notes')
@@ -149,7 +157,7 @@ def adding_artwork():
                              metaceleb_name = mc_name,
                              img = image_full_path,
                              img_mimetype = img_mimetype,
-                             img_name = img_name,
+                             img_name = img_title,
                              note = notes,
                              user_id=current_user.id, 
                              date = str(datetime.datetime.now()).split('.')[0]
@@ -167,6 +175,12 @@ def adding_artwork():
 @login_required
 def deatil_view_metaceleb(id):
     ip_to_update = MetaCeleb.query.get_or_404(id)
+    return render_template("detail_view.html", user=current_user, ip = ip_to_update)
+
+@views.route('/detail-view/Gallery/<int:id>', methods=['GET','POST'])
+@login_required
+def deatil_view_gallery(id):
+    ip_to_update = Gallery.query.get_or_404(id)
     return render_template("detail_view.html", user=current_user, ip = ip_to_update)
 
 @views.route('/adding/MetaCeleb', methods=['GET','POST'])
@@ -232,13 +246,22 @@ def get_maxnum(ips):
 
 @views.route('/delete/MetaCeleb/<int:id>', methods=['GET','POST'])
 @login_required
-def delete_webtoon(id):
-    ip_to_delete = WebToonIP.query.get_or_404(id)
+def delete_metaceleb(id):
+    ip_to_delete = MetaCeleb.query.get_or_404(id)
     db.session.delete(ip_to_delete)
     db.session.commit()
     print ('MetaCeleb', id ,'was deleted')
     return redirect('/MetaCeleb')
-    
+
+@views.route('/delete/Gallery/<int:id>', methods=['GET','POST'])
+@login_required
+def delete_gallery(id):
+    ip_to_delete = Gallery.query.get_or_404(id)
+    db.session.delete(ip_to_delete)
+    db.session.commit()
+    print ('Gallery', id ,'was deleted')
+    return redirect('/MetaCeleb/Gallery')
+
 @views.route('/update/MetaCeleb/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_metaceleb(id):

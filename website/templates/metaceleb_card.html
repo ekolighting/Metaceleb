@@ -7,21 +7,23 @@
 <h2 align="center">
     {{ips[0].__class__.__name__}}
 </h2>
-<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add IP</a>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add MetaCeleb</a>
 
 <br/>
 <br/>
 
-<div class="row row-cols-1 row-cols-md-2 g-2">
+<div class="row row-cols-1 row-cols-md-3 g-1">
     {% for ip in ips %}
 <div class="card" style="width: 18rem; border-radius: 10px;">
     <div class="card-body">
+        <a  href="/detail-view/{{ip.__class__.__name__}}/{{ip.id}}">
     <img src="{{ url_for('views.img_link', id=ip.id)}}" alt="thumbnail" class="img-thumbnail">
+        </a>
     <h4 class="card-title">{{ip.name}}</h4>
     <h6 class="card-subtitle mb-2 text-muted">직업 - {{ip.job}}</h6>
-    <br/>
-      <p class="card-text">
-      생일 - {{ip.dob}}
+    <h6 class="card-subtitle mb-2 text-muted">생일 - {{ip.dob}}</h6>
+     <p class="card-text">
+
       </p>     
     <a href="/detail-view/{{ip.__class__.__name__}}/{{ip.id}}" class="btn btn-outline-secondary btn-sm" >view in detail</a>
     <a href="/update/{{ip.__class__.__name__}}/{{ip.id}}" class="btn btn-outline-secondary btn-sm" >edit</a>

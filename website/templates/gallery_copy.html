@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block title %}Artwork Gallery {% endblock %}
+
+{% block content%}<br/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/component.css" />
+<script src="js/modernizr.custom.js"></script>
+
+<div style="text-align: center;">
+    <img src="../static/images/Slogan_2_Black.png" style = "max-width: 100%" alt="Slogan_black">
+</div>
+<h2 align="center">
+    {{ips[0].__class__.__name__}}
+</h2>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a><br/>
+<br/>
+
+<section class="grid-wrap">
+	<ul class="grid swipe-right" id="grid">
+        {% for ip in ips %}
+		<li><a href = "..{{ip.img.split('website')[-1]}} "><img
+          src="..{{ip.img.split('website')[-1]}}"
+          class="w-100 shadow-1-strong rounded mb-4"
+          alt=""
+        />
+            <h3>{{ip.img_name}}</h3></a></li>
+		{% endfor%}
+        {% if  (ips_len % 2) == 1 %}
+            <li></li>
+        {% endif %}
+
+
+	</ul>
+</section>
+<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/classie.js"></script>
+		<script src="js/colorfinder-1.1.js"></script>
+		<script src="js/gridScrollFx.js"></script>
+		<script>
+			new GridScrollFx( document.getElementById( 'grid' ), {
+				viewportFactor : 0.4
+			} );
+		</script>
+<br/>
+<br/>
+{% endblock %}

@@ -1,6 +1,9 @@
 {% extends "base.html" %} {% block title %}Artwork Gallery {% endblock %}
 
-{% block content%}
+{% block content%}<br/>
+
+
+
 <div style="text-align: center;">
     <img src="../static/images/Slogan_2_Black.png" style = "max-width: 100%" alt="Slogan_black">
 </div>
@@ -13,13 +16,24 @@
 <!-- Gallery -->
 <div class="row">
 {% for ip in ips%}
-<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-    <img
-      src="..{{ip.img.split('website')[-1]}}"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-</div>
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0" align = "center">
+        <a href = "..{{ip.img.split('website')[-1]}} ">
+        <img
+          src="..{{ip.img.split('website')[-1]}}"
+          class="w-100 shadow-1-strong rounded mb-4"
+          alt=""
+        />
+            </a>
+        {{ip.img_name}}<br/><br/>
+        
+        <!--
+             <a href="/update/{{ip.__class__.__name__}}/{{ip.id}}" class="btn btn-outline-secondary btn-sm" >edit</a> 
+    -->
+        
+        <a class = "btn btn-outline-secondary btn-sm" href="/delete/{{ip.__class__.__name__}}/{{ip.id}}">delete</a>
+        <br/>
+        <br/>
+    </div>
       {% endfor %}
 </div>
 <!-- Gallery -->
