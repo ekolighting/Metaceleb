@@ -1712,3 +1712,222 @@ jinja2.exceptions.UndefinedError: 'enumerate' is undefined
 172.17.0.1 - - [01/Oct/2021 02:17:01] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
 172.17.0.1 - - [01/Oct/2021 02:17:01] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
 172.17.0.1 - - [01/Oct/2021 02:17:01] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[35m[1mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/workspace/Metaceleb/website/views.py", line 122, in gallery_cp
+    return render_template("gallery_test.html", user=current_user, ips=ips, ips_len = length)
+  File "/usr/local/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/usr/local/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/usr/local/lib/python3.7/site-packages/jinja2/loaders.py", line 115, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/usr/local/lib/python3.7/site-packages/flask/templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "/usr/local/lib/python3.7/site-packages/flask/templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: gallery_test.html
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:32:52] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:32:53] "[37mGET /MetaCeleb/Gallery_cp?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+ * Detected change in '/workspace/Metaceleb/website/views.py', reloading
+ * Restarting with stat
+/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 296-239-392
+172.17.0.1 - - [01/Oct/2021 02:33:25] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:33:25] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:33:25] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:35:10] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:35:10] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:35:10] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:36:24] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:36:24] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:36:24] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:37:24] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:37:24] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:37:24] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:37:41] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:37:41] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:37:42] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:37:42] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:17] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:38:17] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:17] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:17] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:31] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:38:32] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:32] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:38:32] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:18] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:39:18] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:18] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:18] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:43] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:39:43] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:43] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:39:43] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:45:37] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:45:37] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:45:37] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:46:04] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:46:04] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:46:04] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:48:28] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:48:28] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:48:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:48:49] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:48:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:48:49] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:48:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:50:23] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:50:23] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:50:23] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:52:40] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:52:41] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:52:41] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:12] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:53:13] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:13] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:28] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:53:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:28] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:49] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:53:49] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:53:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:54:21] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:54:21] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:54:21] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:54:27] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:54:27] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:54:27] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:54:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:55:51] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:55:51] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:55:51] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:55:51] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[37mGET /MetaCeleb/Gallery HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Slogan_2_Black.png HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Evan/evan_instagram_profile.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_headphone_trim_1.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_railroad_0913.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_instagram_profile_0910.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Alice/heejin.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Evan/evan_instagram_busking_0910.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_forrest_0909.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_covid19_vaccine.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Emily/emily_hanbok.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:49] "[36mGET /static/images/Pattern_16_9_RGB_9.jpg HTTP/1.1[0m" 304 -
+172.17.0.1 - - [01/Oct/2021 02:56:52] "[37mGET /MetaCeleb/Gallery HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:56:52] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:52] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:56:59] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[37mGET /static/images/Emily/emily_headphone_trim_1.jpg HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[37mGET /static/images/Slogan_2_Black.png HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[37mGET /static/images/Emily/emily_hanbok.jpg HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[37mGET /static/images/Evan/evan_instagram_profile.jpg HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:01] "[37mGET /static/images/Evan/evan_instagram_busking_0910.jpg HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:03] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:57:03] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:57:03] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:09] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:59:09] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:09] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:30] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:59:30] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:30] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:30] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:48] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 02:59:48] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 02:59:48] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:10] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:00:10] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:11] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:38] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:00:38] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:38] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:38] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:44] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:00:44] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:44] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:00:51] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+ * Detected change in '/workspace/Metaceleb/website/views.py', reloading
+ * Restarting with stat
+/usr/local/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+ * Debugger is active!
+ * Debugger PIN: 296-239-392
+172.17.0.1 - - [01/Oct/2021 03:01:49] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:01:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:01:49] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:01:49] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:01:53] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:01:53] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:01:53] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:03:42] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:03:42] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:03:42] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:04:19] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:04:19] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:04:19] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:04:41] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:04:41] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:04:41] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:04:41] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:28] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:05:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:28] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:28] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:45] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:05:45] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:45] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:45] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:47] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:05:54] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:05:56] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:05:56] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:00] "[37mGET /static/images/Emily/emily_headphone_trim_1.jpg HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:06:35] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:06:35] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:35] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:35] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:43] "[37mGET /MetaCeleb/Gallery_cp HTTP/1.1[0m" 200 -
+172.17.0.1 - - [01/Oct/2021 03:06:43] "[33mGET /static/index.js HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:43] "[33mGET /static/css/fonts/stylesheet.css HTTP/1.1[0m" 404 -
+172.17.0.1 - - [01/Oct/2021 03:06:43] "[33mGET /static/index.js HTTP/1.1[0m" 404 -

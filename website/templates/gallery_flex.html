@@ -14,16 +14,14 @@
 <div class="containers">
     {% for ip in ips%}
     <div class="item">
+        <a href = "..{{ip.img.split('website')[-1]}} ">
     <img  src="..{{ip.img.split('website')[-1]}}"
           class="w-100 shadow-1-strong rounded mb-4"
           alt=""
-        />
-            <h3>{{ip.img_name}}</h3>
+         /></a>
+            <h7>{{ip.img_name}}</h7>
     </div>
     {% endfor %}
-	<div class="item">helloflex-start-  </div>
-	<div class="item">abc--  </div>
-	<div class="item">helloflex-end-  </div>
 </div>
 
 <style>
@@ -41,7 +39,7 @@
     
     /*flex-wrap: nowrap; */
 	flex-wrap: wrap;
-	/*flex-wrap: wrap-reverse; */
+	/* flex-wrap: wrap-reverse; */
     
     /* ***flex-direction과 flex-wrap을 한꺼번에 지정할 수 있는 단축 속성이예요.* */
     /*flex-flow: row wrap;*/
@@ -110,12 +108,13 @@
     flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 축약형 속성입니다.
     이 세 속성들은 서로 관련이 깊기 때문에, 이 축약형을 쓰는 편이 여러모로 편리합니다. 
     */
-    
-    flex: 1;
+    /*
+    flex: 1; */
 	/* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
-	flex: 1 1 auto;
+	
+    /*flex: 1 1 auto;*/
 	/* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
-	flex: 1 500px;
+	/*flex: 1 500px;*/
 	/* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
         
 }
