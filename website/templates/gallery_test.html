@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% block title %}Artwork Gallery {% endblock %}
+
+{% block content%}<br/>
+
+<div style="text-align: center;">
+    <img src="../static/images/Slogan_2_Black.png" style = "max-width: 100%" alt="Slogan_black">
+</div>
+<h2 align="center">
+    {{ips[0].__class__.__name__}}
+</h2>
+<a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a><br/>
+<br/>
+
+<div class="containers">
+    {% for ip in ips%}
+    <div class="item">
+    <img  src="..{{ip.img.split('website')[-1]}}"
+          class="w-100 shadow-1-strong rounded mb-4"
+          alt=""
+        />
+            <h3>{{ip.img_name}}</h3>
+    </div>
+    {% endfor %}
+	<div class="item">helloflex-start-  </div>
+	<div class="item">abc--  </div>
+	<div class="item">helloflex-end-  </div>
+</div>
+
+<style>
+.containers {
+	display: flex;
+	/* display: inline-flex; */
+    
+    /* flex-direction “메인축(오뎅꼬치)의 방향을 가로로 할거냐 세로로 할거냐”를 정해주는 거예요. */
+    flex-direction: row;
+    /*flex-direction: column;*/
+	/*flex-direction: row-reverse;*/
+	/*flex-direction: column-reverse;*/
+    
+    /* 컨테이너가 더 이상 아이템들을 한 줄에 담을 여유 공간이 없을 때 아이템 줄바꿈을 어떻게 할지 결정하는 속성입니다.*/
+    
+    /*flex-wrap: nowrap; */
+	flex-wrap: wrap;
+	/*flex-wrap: wrap-reverse; */
+    
+    /* ***flex-direction과 flex-wrap을 한꺼번에 지정할 수 있는 단축 속성이예요.* */
+    /*flex-flow: row wrap;*/
+	/* 아래의 두 줄을 줄여 쓴 것 */
+	/* flex-direction: row; */
+	/* flex-wrap: wrap; */
+    
+    /* “justify”는 메인축(오뎅꼬치) 방향으로 정렬
+    “align”은 수직축(오뎅을 뜯어내는) 방향으로 정렬 */
+    
+    /* 아래에 justify 키워드가 나왔죠? 메인축 방향으로 아이템을들 정렬하는 속성이예요. */
+    /*justify-content: flex-start;*/
+	/* justify-content: flex-end; */
+	/*justify-content: center;*/
+	/* justify-content: space-between; */
+	/* justify-content: space-around; */
+	justify-content: space-evenly;
+    
+    /* 아래는 align 키워드가 나왔죠? 수직축 방향으로 아이템을들 정렬하는 속성이예요.
+    justify-content와 수직 방향의 정렬이라고 생각하시면 됩니다.*/
+    
+    align-items: stretch;
+	/* align-items: flex-start; */
+	/* align-items: flex-end; */
+	/* align-items: center; */
+	/* align-items: baseline; */
+    
+}
+    
+    /* Flex 아이템에 적용하는 속성들 */
+    
+.item {
+        
+    /*원래의 width가 100px이 안되는 item(AAA와 CCC)은 100px로 늘어났고, 
+    원래 100px이 넘는 item(BBB)은 그대로 유지되죠~ */
+        
+	/*flex-basis: auto; /* 기본값 */
+	/* flex-basis: 0; */
+	/* flex-basis: 50%; */
+	/*flex-basis: 300px;*/
+	flex-basis: 20rem;
+	/* flex-basis: content; */
+    
+    /* 반면에 width를 설정하면, 원래 100px을 넘는 BBB도 100px로 맞춰집니다.균일한 사이즈로 통일 */
+    
+    /*width: 100px;*/
+    
+    /* 유연하게 늘리기 - flex-grow
+    flex-grow는 아이템이 flex-basis의 값보다 커질 수 있는지를 결정하는 속성이예요.
+    flex-grow에는 숫자값이 들어가는데, 몇이든 일단 0보다 큰 값이 세팅이 되면 해당 아이템이 유연한(Flexible) 박스로 변하고 원래의 크기보다 커지며 빈 공간을 메우게 됩니다.
+    기본값이 0이기 때문에, 따로 적용하기 전까지는 아이템이 늘어나지 않았던 거예요. 
+        */
+    
+    /*flex-grow: 1;*/
+	flex-grow: 0; /* 기본값 */
+    
+    /* 유연하게 줄이기 - flex-shrink
+    flex-shrink는 flex-grow와 쌍을 이루는 속성으로, 아이템이 flex-basis의 값보다 작아질 수 있는지를 결정합니다.
+    flex-shrink에는 숫자값이 들어가는데, 몇이든 일단 0보다 큰 값이 세팅이 되면 해당 아이템이 유연한(Flexible) 박스로 변하고 flex-basis보다 작아집니다.
+    기본값이 1이기 때문에 따로 세팅하지 않았어도 아이템이 flex-basis보다 작아질 수 있었습니다. 
+    */
+    
+	flex-shrink: 1; /* 기본값 */
+ 
+   /* flex
+    flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 축약형 속성입니다.
+    이 세 속성들은 서로 관련이 깊기 때문에, 이 축약형을 쓰는 편이 여러모로 편리합니다. 
+    */
+    
+    flex: 1;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+	flex: 1 1 auto;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+	flex: 1 500px;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
+        
+}
+    
+
+
+    </style>
+<br/>
+<br/>
+{% endblock %}

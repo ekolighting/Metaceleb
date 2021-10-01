@@ -119,7 +119,7 @@ def gallery():
 def gallery_cp():
     ips = Gallery.query.order_by(desc(Gallery.id)).all()
     length = len(ips)
-    return render_template("gallery_copy.html", user=current_user, ips=ips, ips_len = length)
+    return render_template("gallery_test.html", user=current_user, ips=ips, ips_len = length)
 
 @views.route('/adding/Gallery', methods=['GET','POST'])
 @login_required
