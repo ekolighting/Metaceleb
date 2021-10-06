@@ -11,6 +11,40 @@
 <a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a><br/>
 <br/>
 
+<div class="gamma-container gamma-loading" id="gamma-container">
+
+	<ul class="gamma-gallery">
+        {% for ip in ips %}
+        
+            <div data-alt="" data-description="{{ip.img_name}}" data-max-width="1800" data-max-height="1350">
+            <div data-src="..{{ip.img.split('website')[-1]}}" data-min-width="1300"></div>
+            <!--
+            <div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350">
+                
+                <div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div>
+                <div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div>
+                <div data-src="images/xlarge/3.jpg" data-min-width="700"></div>
+                <div data-src="images/large/3.jpg" data-min-width="300"></div>
+                <div data-src="images/medium/3.jpg" data-min-width="200"></div>
+                <div data-src="images/small/3.jpg" data-min-width="140"></div>
+                <div data-src="images/xsmall/3.jpg"></div>
+                <noscript>
+                <img src="images/xsmall/3.jpg" alt="img03"/>
+                </noscript>
+                -->
+            </div>
+        
+        {% endfor %}
+
+        <div class="gamma-overlay"></div>
+
+        <div id="loadmore" class="loadmore">Example for loading more items...</div>
+    </ul>
+
+</div><!--/main-->
+        
+        
+<!--
 <div class="containers">
     {% for ip in ips%}
     <div class="item">
@@ -30,8 +64,11 @@
 <style>
 .containers {
 	display: grid;
+    overflow: hidden;
 	/* display: inline-grid; */
-    
+    /*align-items: stretch;*/
+    /*justify-content: stretch;*/
+        
     /*  그리드 형태 정의
     grid-template-rows는 행(row)의 배치
     grid-template-columns는 열(column)의 배치
@@ -42,7 +79,7 @@
 	/* grid-template-columns: repeat(3, 1fr) */
 	/* grid-template-columns: 200px 1fr */
 	/* grid-template-columns: 100px 200px auto */
-    /* grid-auto-columns: 1fr 1fr 1fr */
+    /*grid-auto-columns: 1fr 1fr 1fr*/
 
 	/*grid-template-rows: 200px 200px 500px;*/
 	/* grid-template-rows: 1fr 1fr 1fr */
@@ -69,7 +106,7 @@
     auto-fill과 auto-fit은 column의 개수를 미리 정하지 않고 설정된 너비가 허용하는 한 최대한 셀을 채웁니다. auto-fill 먼저 살펴 볼게요.
     */
         
-    /* grid-template-columns: repeat(auto-fill, minmax(20%, auto)); */
+    /*grid-template-columns: repeat(auto-fill, minmax(20%, auto));*/
     
     
     /* 간격 만들기
@@ -88,7 +125,7 @@
 	/* column의 간격을 20px로 */
     
     
-    grid-gap: 10px 20px;
+    /*grid-gap: 10px 20px;*/
 	/* row-gap: 10px; column-gap: 20px; */
     
     
@@ -101,6 +138,12 @@
 
     
     }
+
+.containers img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+    }
 /*    
 .item:nth-child(1) {
 	grid-column: 1 / span 3;
@@ -109,6 +152,7 @@
     */
 
     </style>
+-->
 <br/>
 <br/>
 {% endblock %}

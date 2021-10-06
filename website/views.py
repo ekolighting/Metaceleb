@@ -112,7 +112,7 @@ def show_ip():
 @login_required
 def gallery():
     ips = Gallery.query.order_by(desc(Gallery.id)).all()
-    return render_template("gallery.html", user=current_user, ips=ips)
+    return render_template("gallery_flex.html", user=current_user, ips=ips)
 
 @views.route('/MetaCeleb/Gallery_cp', methods=['GET', 'POST'])
 @login_required

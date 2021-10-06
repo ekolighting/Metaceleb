@@ -8,23 +8,30 @@
 <h2 align="center">
     {{ips[0].__class__.__name__}}
 </h2>
+
 <a href="/adding/{{ips[0].__class__.__name__}}" class="btn btn-primary btn-sm" style = "width : 100%" >Add Artwork</a><br/>
 <br/>
 
-<div class="containers">
+<!--<div class="containers">-->
+<ul>
     {% for ip in ips%}
-    <div class="item">
+    <li>
         <a href = "..{{ip.img.split('website')[-1]}} ">
-    <img  src="..{{ip.img.split('website')[-1]}}"
-          class="w-100 shadow-1-strong rounded mb-4"
-          alt=""
-         /></a>
-            <h7>{{ip.img_name}}</h7>
-    </div>
+            <img src="..{{ip.img.split('website')[-1]}}"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt=""
+              loading="lazy"
+             />
+        </a>
+        <!--{{ip.img_name}}-->
+    </li>
     {% endfor %}
-</div>
+    <li></li>
+</ul>
+<!--</div>-->
 
 <style>
+    /*
 .containers {
 	display: flex;
 	/* display: inline-flex; */
@@ -80,7 +87,7 @@
 	/* flex-basis: 0; */
 	/* flex-basis: 50%; */
 	/*flex-basis: 300px;*/
-	flex-basis: 20rem;
+	/***flex-basis: 20rem; ***/
 	/* flex-basis: content; */
     
     /* 반면에 width를 설정하면, 원래 100px을 넘는 BBB도 100px로 맞춰집니다.균일한 사이즈로 통일 */
@@ -94,7 +101,7 @@
         */
     
     /*flex-grow: 1;*/
-	flex-grow: 0; /* 기본값 */
+	/***flex-grow: 0; /* 기본값 */ 
     
     /* 유연하게 줄이기 - flex-shrink
     flex-shrink는 flex-grow와 쌍을 이루는 속성으로, 아이템이 flex-basis의 값보다 작아질 수 있는지를 결정합니다.
@@ -102,7 +109,7 @@
     기본값이 1이기 때문에 따로 세팅하지 않았어도 아이템이 flex-basis보다 작아질 수 있었습니다. 
     */
     
-	flex-shrink: 1; /* 기본값 */
+	/*** flex-shrink: 1; /* 기본값 */
  
    /* flex
     flex-grow, flex-shrink, flex-basis를 한 번에 쓸 수 있는 축약형 속성입니다.
@@ -119,7 +126,29 @@
         
 }
     
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+li {
+  height: 30vh;
+  flex-grow: 1;
+  list-style-type: none;
+}
+
+li:last-child {
+  flex-grow: 10;
+}
+
+img {
+  max-height: 95%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  border-radius: 0;
+  padding: 0;
+}
 
     </style>
 <br/>
