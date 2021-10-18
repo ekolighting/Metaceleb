@@ -121,6 +121,13 @@ def gallery_cp():
     length = len(ips)
     return render_template("gallery_flex.html", user=current_user, ips=ips, ips_len = length)
 
+@views.route('/MetaCeleb/Gallery_mov', methods=['GET', 'POST'])
+@login_required
+def gallery_mov():
+    ips = Gallery.query.order_by(desc(Gallery.id)).all()
+    length = len(ips)
+    return render_template("gallery_mov.html", user=current_user, ips=ips, ips_len = length)
+
 @views.route('/adding/Gallery', methods=['GET','POST'])
 @login_required
 def adding_artwork():
